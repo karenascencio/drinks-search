@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { CategoriesContext } from '../../Context/CategoriesContext'
+import { RecipesContext } from '../../Context/RecipesContext'
 
 const Form = () => {
 
@@ -8,6 +9,7 @@ const Form = () => {
     category: ''
   })
 
+  const { setSearchRecipe, setIsAQuery } = useContext(RecipesContext)
   const { categories } = useContext(CategoriesContext)
 
   // Function to read content
@@ -18,9 +20,18 @@ const Form = () => {
     })
   }
 
-  console.log(categories)
+  // function to submit search
+  const onSubminHandler = event => {
+    event.preventDefault()
+    setSearchRecipe(search)
+    setIsAQuery(true)
+  }
+
   return (
-    <form className='col-12'>
+    <form
+      className='col-12'
+      onSubmit={onSubminHandler}
+    >
       <fieldset className='text-center'>
         <legend>Search any drink recipe by category or ingredient</legend>
       </fieldset>

@@ -3,17 +3,20 @@ import React from "react";
 import Header from "./Components/Header"
 import Form from "./Components/Form"
 // Context
-import CategoriesProvider from "./Context/CategoriesContext";
+import CategoriesProvider from "./Context/CategoriesContext"
+import RecipesProvider from "./Context/RecipesContext"
 
 function App() {
   return (
     <CategoriesProvider>
-      <Header />
-      <div className='container mt-5'>
-        <div className='row'>
-          <Form />
+      <RecipesProvider>
+        <Header />
+        <div className='container mt-5'>
+          <div className='row'>
+            <Form />
+          </div>
         </div>
-      </div>
+        </RecipesProvider>
     </CategoriesProvider>
   );
 }
