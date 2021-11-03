@@ -6,14 +6,27 @@ export const ModalContext = createContext()
 
 const ModalProvider = (props) => {
 
-  // Provider state
-  const [ recipeId, setRecipeId ] = useState(null)
+  const [recipeId, setRecipetId] = useState(null)
+  const [recipeDetails, setRecipeDetails] = useState({})
+
+  // once we have recipeId, is time to call api
+  useEffect(() => {
+    const getRecipe = async () => {
+      if (!recipeId) return
+
+      const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${recipeId}`
+
+      const response = await axios.get(url)
+      setRecipeDetails(response.data.drinks[0])
+    }
+    getRecipe()
+  },[recipeId])
 
   return (
     <ModalContext.Provider
-      value={
-        setRecipeId
-      }
+      value={{
+        setRecipetId
+      }}
     >
       {props.children}
     </ModalContext.Provider>

@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+// Importing context
+import { ModalContext } from '../../Context/ModalContext'
 
 const RecipeCard = ({recipe}) => {
+
+  // Get values from context
+  const { setRecipetId } = useContext(ModalContext)
+
   return (
     <div
       className='col-md-4 mb-3'
@@ -20,6 +26,9 @@ const RecipeCard = ({recipe}) => {
           <button
             type='button'
             className='btn btn-block btn-primary'
+            onClick={() => 
+              setRecipetId(recipe.idDrink)
+            }
           >
             See full recipe
           </button>
