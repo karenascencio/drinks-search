@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react"
 import axios from 'axios'
+
 export const RecipesContext = createContext()
 
 const RecipesProvider = ({ children }) => {
@@ -26,6 +27,7 @@ const RecipesProvider = ({ children }) => {
   return (
     <RecipesContext.Provider
       value={{
+        recipes,
         setSearchRecipe,
         setIsAQuery
       }}

@@ -66,7 +66,7 @@ const Form = () => {
         <div className='col-md-4'>
           <input
             type='submit'
-            className='btn btn-block btn-info'
+            className='btn btn-block btn-primary'
             value='Search drinks'
           />
         </div>
