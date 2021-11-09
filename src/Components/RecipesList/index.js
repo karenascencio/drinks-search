@@ -12,12 +12,17 @@ const RecipesList = () => {
   return (
     <div className='row mt-5'>
       {
-        recipes.map( recipe => (
-          <RecipeCard 
-            key={recipe.idDrink}
-            recipe={recipe}
-          />
-        ))
+        recipes ?
+          recipes.map( recipe => (
+            <RecipeCard 
+              key={recipe.idDrink}
+              recipe={recipe}
+            />
+          ))
+        :
+        <h2 className='text-primary col-12'>
+          There are not results
+        </h2>
       }
     </div>
   )
